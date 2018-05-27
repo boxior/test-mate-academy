@@ -1,0 +1,60 @@
+body {
+  font-family: 'indieflower', sans-serif;
+  color: $color-grey;
+  //font: $font-text;
+  //letter-spacing: 0.85px;
+}
+
+a {
+  // todo: use function color
+  text-decoration: none;
+  transition: $time-anim;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-bottom: 1px solid $color-yellow;
+  }
+}
+
+button, .btn-type {
+  background-color: $color-btn;
+  border: 0;
+  border-bottom: 0;
+  border-radius: 5px;
+  color: $color-blue-dark;
+  font-weight: bold;
+  transition: $time-anim;
+
+  &:hover {
+    background-color: $color-btn-hover;
+    border-bottom: 0;
+    cursor: pointer;
+    //opacity: .7;
+  }
+}
+
+input, textarea {
+  background-color: transparent;
+  border: 0;
+  border-radius: 5px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.title-main {
+  color: $color-blue-dark;
+  font: $font-title-bold;
+
+  @include media-tablet {
+    font-size: 16px;
+  }
+  @include media-mobile {
+    font-size: 14px;
+  }
+  &:first-letter {
+    text-transform: capitalize;
+  }
+}

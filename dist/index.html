@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Project Name</title>
+		<style>
+			ol {
+			    width: 200px;
+			}
+			
+			li + li {
+			    margin-top: 4px;
+			}
+			
+			a {
+			    color: black;
+			}
+			
+			.fin a {
+			    color: green;
+			}
+			
+			.active {
+			    color: red !important;
+			}
+			
+			.iframe {
+			    position: fixed;
+			    top: 0;
+			    right: 0;
+			    width: calc(100vw - 220px);
+			}
+			
+			iframe {
+			    width: 100%;
+			    height: 900px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="iframe">
+			<iframe src="" frameborder="0" id="iframe"></iframe>
+		</div>
+		<ol class="list-pages">
+			<li class="list-pages__item"><a class="link" href="page-home.html" target="_blank">Page-Home</a></li>
+		</ol>
+		<script>
+			var elFrame = document.getElementById('iframe'),
+			    curLink = null,
+			    links = document.getElementsByTagName('a');
+			
+			for (var i = 0; i < links.length; i += 1) {
+			    links[i].addEventListener('focus', handle, false);
+			    links[i].addEventListener('mouseenter', handle, false);
+			
+			    if (!i) {
+			        links[i].focus();
+			    }
+			}
+			
+			function handle() {
+			    if (curLink) {
+			        curLink.classList.remove('active');
+			    }
+			
+			    curLink = this;
+			    curLink.classList.add('active');
+			
+			    elFrame.src = curLink.href;
+			}
+		</script>
+	</body>
+</html>

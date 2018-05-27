@@ -1,0 +1,41 @@
+.form__field
+    label().form__label First name*
+    input(type="text" name="firstName" required).form__input
+.form__field
+    label().form__label Last name*
+    input(type="text" name="lastName" required).form__input
+.form__field
+    label().form__label Birthday*
+    input(type="text" id="datetimepicker").form__input
+.form__field.form__field--radio
+    label Sex*
+    label(for="male").form__label.form__label--sex
+        input(type="radio" name="sex" value="male" id="male" required).form__input
+        |Male
+    label(for="female").form__label.form__label--sex
+        input(type="radio" name="sex" value="female" id="female" required).form__input
+        |Female
+
+.form__field
+    label.form__label Country*
+    select.form__input
+        option
+        option Ukraine
+        option England
+        option USA
+        option Zimbabwe
+        option Other
+.form__field
+    label.form__label E-mail*
+    input(type="text" name="email" required).form__input
+.form__field
+    label.form__label Password*
+    input(type="password" name="password" required).form__input
+.form__field
+    label.form__label Address*
+    input(type="text" name="address" required).form__input
+.form__field
+    label.form__label Notes*
+    textarea(name="notes" required).form__textarea
+.form__footer
+    button(type="submit").form__submit.form__btn Send

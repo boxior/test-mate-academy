@@ -1,0 +1,151 @@
+@mixin mq($args...) {
+	$media-type: 'only screen';
+	$media-type-key: 'media-type';
+	$args: keywords($args);
+	$expr: '';
+
+	@if map-has-key($args, $media-type-key) {
+		$media-type: map-get($args, $media-type-key);
+		$args: map-remove($args, $media-type-key);
+	}
+
+	@each $key, $value in $args {
+		@if $value {
+			$expr: "#{$expr} and (#{$key}: #{$value})";
+		}
+	}
+
+	@media #{$media-type + $expr} {
+		@content;
+	}
+}
+
+
+
+$media-d-s-min-width: 768px;
+$media-d-s-max-width: 1300px;
+
+@mixin media-d-s{
+	@include mq($media-type: 'all', $max-width: $media-d-s-max-width) {
+		@content;
+	}
+}
+
+$media-d-m-min-width: 768px;
+$media-d-m-max-width: 1110px;
+
+@mixin media-d-m{
+	@include mq($media-type: 'all', $max-width: $media-d-m-max-width) {
+		@content;
+	}
+}
+
+
+$media-hover-min-width: 768px;
+$media-hover-max-width: 1920px;
+
+@mixin media-hover{
+	@include mq($media-type: 'all', $min-width: $media-hover-min-width) {
+		@content;
+	}
+}
+
+@mixin media-desktop-small{
+	@include mq($media-type: 'all', $min-width: $media-desktop-small-min-width) {
+		@content;
+	}
+}
+
+@mixin media-only-desktop-small{
+	@include mq($media-type: 'all', $min-width: $media-desktop-small-min-width, $max-width: $media-desktop-small-max-width) {
+		@content;
+	}
+}
+
+@mixin media-desktop-small-plus{
+	@include mq($media-type: 'all', $min-width: $media-desktop-small-min-width) {
+		@content;
+	}
+}
+
+$media-tablet-min-width: 800px;
+//$media-tablet-max-width: 1110px;
+$media-tablet-max-width: 1023px;
+@mixin media-tablet{
+	@include mq($media-type: 'all', $max-width: $media-tablet-max-width) {
+		@content;
+	}
+}
+
+@mixin media-only-tablet{
+	@include mq($media-type: 'all', $min-width: $media-tablet-min-width, $max-width: $media-tablet-max-width) {
+		@content;
+	}
+}
+
+$media-mobile-landscape-min-width: 567px; // iPhone 5 landscape
+$media-mobile-landscape-max-width: 799px;
+@mixin media-mobile-landscape{
+	@include mq($media-type: 'all', $max-width: $media-mobile-landscape-max-width) {
+		@content;
+	}
+}
+
+@mixin media-only-mobile-landscape{
+	@include mq($media-type: 'all', $min-width: $media-mobile-landscape-min-width, $max-width: $media-mobile-landscape-max-width) {
+		@content;
+	}
+}
+
+$media-mobile-min-width: 320px;
+//$media-mobile-max-width: 800px;
+$media-mobile-max-width: 767px;
+@mixin media-mobile{
+	@include mq($media-type: 'all', $max-width: $media-mobile-max-width) {
+		@content;
+	}
+}
+
+
+
+
+@mixin media-xs{
+	@include mq($media-type: 'all', $max-width: $media-max-xs) {
+		@content;
+	}
+}
+
+@mixin media-only-xs{
+	@include mq($media-type: 'all', $min-width: $media-min-xs, $max-width: $media-max-xs) {
+		@content;
+	}
+}
+
+
+@mixin media($max: null, $min: null) {
+
+	@if $max {
+
+		@if $min {
+
+			@include mq($media-type: 'all', $max-width: $max, $min-width: $min) {
+				@content;
+			}
+
+		} @else {
+
+			@include mq($media-type: 'all', $max-width: $max) {
+				@content;
+			}
+
+		}
+
+	} @else {
+
+		@include mq($media-type: 'all', $min-width: $min) {
+			@content;
+		}
+
+	}
+
+}

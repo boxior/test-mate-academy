@@ -1,0 +1,48 @@
+html,
+body {
+	height: 100%;
+	font-family: 'indieflower', sans-serif;
+	color: $color-grey;
+
+
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	line-height: 1;
+
+	&,
+	&::before,
+	&::after {
+		box-sizing: border-box;
+	}
+
+	&:focus,
+	&:active {
+		outline: none;
+	}
+}
+
+.wrapper {
+	position: relative;
+	display: block;
+	overflow: hidden;
+}
+
+.container {
+	display: block;
+	max-width: 1440px;
+	padding: 0 15px;
+	margin: 0 auto;
+
+	@include media-tablet {
+		max-width: 768px;
+		padding: 0 10px;
+	}
+
+	@include media-mobile {
+		max-width: 320px;
+	}
+}
+

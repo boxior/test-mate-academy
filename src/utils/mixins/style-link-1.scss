@@ -1,0 +1,29 @@
+@mixin  style-link-1 ($color) {
+	position: relative;
+	padding: 2px;
+	color: $color;
+
+	text-decoration: none;
+
+	&:after {
+		content: '';
+		position: absolute;
+		bottom: 0px;
+		left: 0;
+
+		width: 100%;
+		height: 2px;
+
+		background: $color;
+
+		transition: all 0.5s;
+	}
+
+	&:hover {
+
+		&:after {
+			width: 0%;
+			left: 50%;
+		}
+	}
+}

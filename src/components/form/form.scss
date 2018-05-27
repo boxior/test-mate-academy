@@ -1,0 +1,90 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px 60px;
+
+  @include media-mobile {
+    width: 180px;
+    padding: 15px 0;
+  }
+
+  .form__field {
+    position: relative;
+    width: 100%;
+    padding: 10px 10px;
+
+    @include media-mobile {
+      width: 100%;
+      padding: 0;
+    }
+
+    &.form__field--radio {
+      .form__input {
+        width: auto;
+        margin: 5px 10px;
+      }
+    }
+  }
+
+  .form__input {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid $color-grey-input;
+    font-size: 18px;
+
+    @include media-mobile {
+      width: 100%;
+      font-size: 12px;
+    }
+  }
+
+  .form__label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .form__label--sex {
+    display: flex;
+    align-items: center;
+  }
+
+  .form__textarea {
+    @extend .form__input;
+    width: 100%;
+    min-height: 100px;
+
+    resize: none;
+
+    @include media-mobile {
+      min-height: 50px;
+    }
+  }
+
+  .form__footer {
+    width: 100%;
+    text-align: center;
+    order: 8;
+  }
+
+  .form__submit {
+    padding: 10px 50px;
+    font-size: 24px;
+
+    @include media-mobile {
+      font-size: 18px;
+      padding: 5px 30px;
+    }
+
+  }
+  .error__input {
+    border: 1px solid red;
+  }
+
+  .error__msg {
+    margin-top: 10px;
+    color: red;
+  }
+
+}
